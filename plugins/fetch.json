@@ -16,5 +16,13 @@
     "variables": {
       "GEOLOCATION_USAGE_DESCRIPTION": "Allow this app to use your location to determine the geographical settings of your location."
     }
+  },
+  "cordova-plugin-dialogs": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-dialogs"
+    },
+    "is_top_level": true,
+    "variables": {}
   }
 }

@@ -21,6 +21,7 @@ cordova -d build
 
 # Run for this iOS target
 cordova run ios --target="iPhone-8, 11.2"
+# cordova run android
 
 # Deploying on your device (comment out the block comments and comment-out everything above this block to properly
 # execute.

@@ -10,8 +10,11 @@
     "author": "Apache Cordova Team",
     "license": "Apache-2.0",
     "dependencies": {
+        "cordova-android": "^7.0.0",
         "cordova-ios": "^4.5.4",
+        "cordova-plugin-dialogs": "^2.0.1",
         "cordova-plugin-geolocation": "^4.0.1",
+        "cordova-plugin-geolocation-ios11": "^4.0.3",
         "cordova-plugin-whitelist": "^1.3.3",
         "suncalc": "^1.8.0"
     },
@@ -20,9 +23,11 @@
             "cordova-plugin-whitelist": {},
             "cordova-plugin-geolocation": {
                 "GEOLOCATION_USAGE_DESCRIPTION": "Allow this app to use your location to determine the geographical settings of your location."
-            }
+            },
+            "cordova-plugin-dialogs": {}
         },
         "platforms": [
+            "android",
             "ios"
         ]
     }

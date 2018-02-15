@@ -26,5 +26,10 @@
     <plugin name="cordova-plugin-geolocation" spec="^4.0.1">
         <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="Allow this app to use your location to determine the geographical settings of your location." />
     </plugin>
+    <edit-config file="*-Info.plist" mode="merge" target="NSLocationWhenInUseUsageDescription">
+        <string>Needs location to determine geographical setting.</string>
+    </edit-config>
+    <plugin name="cordova-plugin-dialogs" spec="^2.0.1" />
+    <engine name="android" spec="^7.0.0" />
     <engine name="ios" spec="^4.5.4" />
 </widget>

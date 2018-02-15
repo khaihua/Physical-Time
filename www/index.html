@@ -32,12 +32,13 @@
             * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
                 * Enable inline JS: add 'unsafe-inline' to default-src
         -->
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+        <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;"> -->
+        <meta http-equiv="Content-Security-Policy" content="default-src gap: *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src 'self' 'unsafe-inline' *">
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
         <link rel="stylesheet" type="text/css" href="css/index.css">
-        <script type="text/javascript" src="js/index.js"></script>
+        <!-- <script type="text/javascript" src="js/index.js"></script> -->
         <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
         <title>Physical Time</title>
     </head>
@@ -71,34 +72,72 @@
     </body>
 
     <script type="text/javascript">
-        /* Main execution in which the divs are displayed (waits for page to load)
-         */
-        $(document).ready(function(){
-            // The time each div will fade in or out
-            var fadeTime = 2000;
-            // Display no divs
-            $("div").css("display", "none");
-            // Fade into the landing page
-            $("#landing-page").fadeIn(fadeTime);
-            // Set a timeout to fade out of the landing page div
-            setTimeout(function(){
-                $("#landing-page").fadeOut(fadeTime);
-            }, 5000);
-            // Initially, the continue button will not be present
-            $("a.about-continue").css("display", "none")
-            // Illusion to transition into the about page
-            setTimeout(function(){
-                $("#about-page").fadeIn(fadeTime);
-            }, 7000);
-            // Wait a few more seconds for the disclaimer continue button
-            // to appear
-            $("a.about-continue").delay(fadeTime * 4.5).fadeIn(fadeTime);
-            // Upon clicking continue, the user will be directed to the next div
-            $("a.about-continue").click(function(event){
-                event.preventDefault();
-                $("#about-page").fadeOut(fadeTime/2);
-                $("#select-page").delay(fadeTime).fadeIn(fadeTime);
-            });
+        // Event listener to instantiate deviceready event (for geolocation)
+        document.addEventListener("deviceready", onDeviceReady, false);
+        // Latitude and longitude coordinates of the user
+        var lat;
+        var long;
+
+        function onDeviceReady()
+        {
+            // Case where user allows to share location
+            function onSuccess(position)
+            {
+                // Latitude and longitude of user
+                lat = position.coords.latitude;
+                long = position.coords.longitude;
+                console.log("Latitude: " + lat);
+                console.log("Longitude: " + long);
+            };
+            // Case where user does not share location (exit from the app)
+            function onError(error)
+            {
+                console.log(error.message);
+                // Error message
+                navigator.notification.alert
+                (
+                    // message
+                    'The app will not work unless you give us your location.',
+                    // callback
+                    function alertDismissed(){},
+                    // title
+                    'Sorry!',
+                    // buttonName
+                    'Done'
+                );
+            };
+            // Options for timeout and accuracy
+            var options = { enableHighAccuracy: false, timeout: 20000 };
+            // Instantiate getting the user's location
+            navigator.geolocation.getCurrentPosition(onSuccess, onError, options);
+        };
+
+        // The time each div will fade in or out
+        var fadeTime = 2000;
+        // Display no divs
+        $("div").css("display", "none");
+        // Fade into the landing page
+        $("#landing-page").fadeIn(fadeTime);
+        // Set a timeout to fade out of the landing page div
+        setTimeout(function(){
+            $("#landing-page").fadeOut(fadeTime);
+        }, 5000);
+        // Initially, the continue button will not be present
+        $("a.about-continue").css("display", "none")
+        // Illusion to transition into the about page
+        setTimeout(function(){
+            $("#about-page").fadeIn(fadeTime);
+        }, 7000);
+        // Wait a few more seconds for the disclaimer continue button
+        // to appear
+        $("a.about-continue").delay(fadeTime * 4.5).fadeIn(fadeTime);
+        // Upon clicking continue, the user will be directed to the next div
+        $("a.about-continue").click(function(event){
+            event.preventDefault();
+            $("#about-page").fadeOut(fadeTime/2);
+            $("#select-page").delay(fadeTime).fadeIn(fadeTime);
         });
+        // Debugging purposes only
+        alert("Latitude: " + lat + ", Longitude: " + long);
     </script>
 </html>

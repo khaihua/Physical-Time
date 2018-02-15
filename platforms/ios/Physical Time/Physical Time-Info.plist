@@ -52,5 +52,7 @@
       <key>NSAllowsArbitraryLoads</key>
       <true/>
     </dict>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Needs location to determine geographical setting.</string>
   </dict>
 </plist>
