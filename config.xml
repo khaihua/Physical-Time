@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="io.cordova.hellocordova" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>HelloCordova</name>
+    <name>Physical Time</name>
     <description>
-        A sample Apache Cordova application that responds to the deviceready event.
+	Time has become abstract; we’ve lost touch with the physical meaning of the seasons or the time of day in terms of the constellation of the earth relative to sun, moon, and stars. We want to help reestablish our place in the universe.
     </description>
-    <author email="dev@cordova.apache.org" href="http://cordova.io">
-        Apache Cordova Team
+    <author email="xcristian.gonzales@gmail.com" href="http://cristiangonzales.com">
+        Physical Time Team
     </author>
     <content src="index.html" />
     <plugin name="cordova-plugin-whitelist" spec="1" />
@@ -23,5 +23,8 @@
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
     </platform>
-    <engine name="ios" spec="~4.5.4" />
+    <plugin name="cordova-plugin-geolocation" spec="^4.0.1">
+        <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="Allow this app to use your location to determine the geographical settings of your location." />
+    </plugin>
+    <engine name="ios" spec="^4.5.4" />
 </widget>
