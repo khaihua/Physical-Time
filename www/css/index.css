@@ -185,3 +185,152 @@ a:active
     display: inline-block;
     font-size: 10px;
 }
+
+/* Resizing and positioning for "Welcome to Physical Time"
+ */
+.physical-time-header
+{
+    font-size: 35px;
+    padding: 15px;
+    position: absolute;
+    top: 8%;
+}
+
+/* General button styling
+ */
+.button {
+    position: absolute;
+    background-color: white;
+    border-radius: 10px;
+    color: black;
+    padding: 50px 50px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+/* Button position for clock button
+ */
+.clock-button
+{
+    top: 45%;
+    left: 25%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+/* Button position for feature2 button
+ */
+.feature2-button
+{
+    top: 45%;
+    left: 75%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+/* Button position for feature3 button
+ */
+.feature3-button
+{
+    top: 70%;
+    left: 25%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+/* Button position for feature4 button
+ */
+.feature4-button
+{
+    top: 70%;
+    left: 75%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+/* Images for the buttons (position and size only--the *-image classes have
+    positioning dimensions specific to each image)
+ */
+.button-images
+{
+    position: absolute;
+    max-width: 15%;
+    max-height: 15%;
+}
+
+/* Image position for the clock
+ */
+.clock-image
+{
+    top: 43%;
+    left: 25%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+/* Image position for feature2
+ */
+.feature2-image
+{
+    top: 43%;
+    left: 75%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+ /* Image position for feature3
+  */
+ .feature3-image
+ {
+     top: 68%;
+     left: 25%;
+     transform: translateX(-50%) translateY(-50%);
+ }
+
+ /* Image position for feature4
+  */
+ .feature4-image
+ {
+     top: 68%;
+     left: 75%;
+     transform: translateX(-50%) translateY(-50%);
+ }
+
+/* Header positioning and size for clock
+ */
+.clock-header
+{
+    position: absolute;
+    font-size: 15px;
+    top: 48%;
+    left: 25%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+/* Header positioning and size for feature2
+ */
+.feature2-header
+{
+    position: absolute;
+    font-size: 15px;
+    top: 48%;
+    left: 75%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+/* Header positioning and size for feature3
+ */
+.feature3-header
+{
+    position: absolute;
+    font-size: 15px;
+    top: 73%;
+    left: 25%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+/* Header positioning and size for feature4
+ */
+.feature4-header
+{
+    position: absolute;
+    font-size: 15px;
+    top: 73%;
+    left: 75%;
+    transform: translateX(-50%) translateY(-50%);
+}

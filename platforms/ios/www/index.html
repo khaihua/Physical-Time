@@ -40,6 +40,7 @@
         <link rel="stylesheet" type="text/css" href="css/index.css">
         <!-- <script type="text/javascript" src="js/index.js"></script> -->
         <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="js/suncalc.js"></script>
         <title>Physical Time</title>
     </head>
 
@@ -68,16 +69,64 @@
             </p>
             <a class="about-continue">CONTINUE</a>
         </div>
+        <!--
+            Div for donation selection
+        -->
+        <div id="select-page" style="font-family: 'Vibur', cursive;">
+            <center>
+                <h1 class="physical-time-header bottom">Welcome to Physical Time.</h1>
+            </center>
+            <!--
+                Clock button
+                TODO: Edit the anchor tags such that it is less hacky
+            -->
+            <a class="button clock-button clock-transition"></a>
+            <a class="clock-transition">
+                <h1 class="clock-header">The clock.</h1>
+                <img src="img/clock.png" class="button-images clock-image"></img>
+            </a>
+            <!--
+                Feature2 button
+                TODO: Edit the anchor tags such that it is less hacky
+            -->
+            <a class="button feature2-button feature2-transition"></a>
+            <a class="feature2-transition">
+                <h1 class="feature2-header">Feature.</h1>
+                <img src="" class="button-images feature2-image"></img>
+            </a>
+            <!--
+                Feature3 button
+                TODO: Edit the anchor tags such that it is less hacky
+            -->
+            <a class="button feature3-button feature3-transition"></a>
+            <a class="feature3-transition">
+                <h1 class="feature3-header">Feature.</h1>
+                <img src="" class="button-images feature3-image"></img>
+            </a>
+            <!--
+                Feature4 button
+                TODO: Edit the anchor tags such that it is less hacky
+            -->
+            <a class="button feature4-button feature4-transition"></a>
+            <a class="feature4-transition">
+                <h1 class="feature4-header">Feature.</h1>
+                <img src="" class="button-images feature4-image"></img>
+            </a>
+        </div>
+        <div id="clock"></div>
         <script type="text/javascript" src="cordova.js"></script>
     </body>
 
     <script type="text/javascript">
         // Event listener to instantiate deviceready event (for geolocation)
         document.addEventListener("deviceready", onDeviceReady, false);
+        initApp();
         // Latitude and longitude coordinates of the user
-        var lat;
-        var long;
+        var lat, long, sunriseStart, sunriseEnd, sunsetStart,
+            sunsetEnd, dusk, nightStart, nightEnd, dawn;
 
+        /* onDeviceReady callable instantiated by event listener
+         */
         function onDeviceReady()
         {
             // Case where user allows to share location
@@ -112,31 +161,89 @@
             navigator.geolocation.getCurrentPosition(onSuccess, onError, options);
         };
 
-        // The time each div will fade in or out
-        var fadeTime = 2000;
-        // Display no divs
-        $("div").css("display", "none");
-        // Fade into the landing page
-        $("#landing-page").fadeIn(fadeTime);
-        // Set a timeout to fade out of the landing page div
-        setTimeout(function(){
-            $("#landing-page").fadeOut(fadeTime);
-        }, 5000);
-        // Initially, the continue button will not be present
-        $("a.about-continue").css("display", "none")
-        // Illusion to transition into the about page
-        setTimeout(function(){
-            $("#about-page").fadeIn(fadeTime);
-        }, 7000);
-        // Wait a few more seconds for the disclaimer continue button
-        // to appear
-        $("a.about-continue").delay(fadeTime * 4.5).fadeIn(fadeTime);
-        // Upon clicking continue, the user will be directed to the next div
-        $("a.about-continue").click(function(event){
-            event.preventDefault();
-            $("#about-page").fadeOut(fadeTime/2);
-            $("#select-page").delay(fadeTime).fadeIn(fadeTime);
-            alert("Latitude: " + lat + ", Longitude: " + long);
-        });
+        /* Vanilla jQuery that makes up the frontend
+         */
+        function initApp()
+        {
+            // The time each div will fade in or out
+            var fadeTime = 2000;
+            // Display no divs
+            $("div").css("display", "none");
+            // Fade into the landing page
+            $("#landing-page").fadeIn(fadeTime);
+            // Set a timeout to fade out of the landing page div
+            setTimeout(function(){
+                $("#landing-page").fadeOut(fadeTime);
+            }, 5000);
+            // Initially, the continue button will not be present
+            $("a.about-continue").css("display", "none")
+            // Illusion to transition into the about page
+            setTimeout(function(){
+                $("#about-page").fadeIn(fadeTime);
+            }, 7000);
+            // Wait a few more seconds for the disclaimer continue button
+            // to appear
+            $("a.about-continue").delay(fadeTime * 4.5).fadeIn(fadeTime);
+            // Upon clicking continue, the user will be directed to the next div
+            $("a.about-continue").click(function(event){
+                event.preventDefault();
+                $("#about-page").fadeOut(fadeTime/2);
+                $("#select-page").delay(fadeTime).fadeIn(fadeTime);
+            });
+
+            /* After the user presses a button, a different div will be prompted
+             * with the selected feature
+             */
+            // On-click action for clock button
+            $("a.clock-transition").click(function(event){
+                event.preventDefault();
+                $("#select-page").fadeOut(fadeTime/2);
+                $("").delay(fadeTime).fadeIn(fadeTime);
+                initTimes();
+            });
+        };
+        /* Function to appropriate values to sunrise, sunset,
+         */
+        function initTimes()
+        {
+            // The case that the user does not share their location or we are for
+            // some reason not able to obtain those values
+            if (lat == undefined || long == undefined)
+            {
+                return;
+                // TODO: Implement logic for exiting the app
+            }
+
+            var times = SunCalc.getTimes(new Date(), lat, long);
+            nightEnd = times.nightEnd.getHours() + ':' + times.nightEnd.getMinutes();
+            dawn = times.dawn.getHours() + ':' + times.dawn.getMinutes();
+            sunriseStart = times.sunrise.getHours() + ':' + times.sunrise.getMinutes();
+            sunriseEnd = times.sunriseEnd.getHours() + ':' + times.sunriseEnd.getMinutes();
+            sunsetStart = times.sunsetStart.getHours() + ':' + times.sunsetStart.getMinutes();
+            sunsetEnd = times.sunset.getHours() + ':' + times.sunset.getMinutes();
+            dusk = times.dusk.getHours() + ':' + times.dusk.getMinutes();
+            nightStart = times.night.getHours() + ':' + times.night.getMinutes();
+
+            // Debugging
+            console.log("Night end: " + nightEnd);
+            console.log("Dawn: " + dawn);
+            console.log("Sunrise start: " + sunriseStart);
+            console.log("Sunrise end: " + sunriseEnd);
+            console.log("Sunset start: " + sunsetStart);
+            console.log("Sunset end: " + sunsetEnd);
+            console.log("Dusk: " + dusk);
+            console.log("Night start: " + nightStart);
+
+            alert(
+                "Night end: " + nightEnd + "\n" +
+                "Dawn: " + dawn + "\n" +
+                "Sunrise start: " + sunriseStart + "\n" +
+                "Sunrise end: " + sunriseEnd + "\n" +
+                "Sunset start: " + sunsetStart + "\n" +
+                "Sunset end: " + sunsetEnd + "\n" +
+                "Dusk: " + dusk + "\n" +
+                "Night start: " + nightStart
+            );
+        }
     </script>
 </html>
