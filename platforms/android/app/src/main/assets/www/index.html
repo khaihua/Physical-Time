@@ -78,12 +78,17 @@
             </center>
             <!--
                 Clock button
+                TODO: Fix the button such that the entire space is clickable, not
+                      just the whitespace
             -->
             <a class="button clock-button clock-transition"></a>
+            <h1 class="clock-header">The clock.</h1>
+            <img src="img/clock.png" class="button-images clock-image"></img>
+            <!-- <a class="button clock-button clock-transition"></a>
             <a class="clock-transition">
                 <h1 class="clock-header">The clock.</h1>
                 <img src="img/clock.png" class="button-images clock-image"></img>
-            </a>
+            </a> -->
             <!--
                 Feature2 button
             -->
@@ -431,7 +436,12 @@
             {
                 fileName = "sunrise.gif";
             }
-            // TODO sunriseEnd - morningGoldenHour
+            // TODO: Find a picture for the period between the end of sunrise and
+            //       the morning golden hour
+            else if (currentTime >= sunriseEnd && currentTime < morningGoldenHour)
+            {
+                fileName = "sunrise.gif";
+            }
             else if (currentTime >= morningGoldenHour && currentTime < solarNoon)
             {
                 fileName = "morningGoldenHour.jpg";

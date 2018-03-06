@@ -113,6 +113,12 @@ a:active
     top: 30%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
+    color: white;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
 }
 
 /* Resizing for the gears GIF
@@ -187,12 +193,18 @@ a:active
     padding: 15px;
     position: absolute;
     top: 8%;
-    color: black;
+    color: white;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
 }
 
 /* General button styling
  */
-.button {
+.button
+{
     position: absolute;
     background-color: white;
     border-radius: 10px;
