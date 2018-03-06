@@ -26,35 +26,26 @@
 @font-face
 {
     font-family: 'Grand Hotel';
-    src: url('GrandHotel-Regular.ttf') format('truetype');
+    src: url('fonts/GrandHotel-Regular.ttf') format('truetype');
 }
 
 @font-face
 {
     font-family: 'Vibur';
-    src: url('Vibur-Regular.ttf') format('truetype');
+    src: url('fonts/Vibur-Regular.ttf') format('truetype');
 }
 
 @font-face
 {
     font-family: 'Zilla Slab Highlight';
-    src: url('ZillaSlabHighlight-Regular.ttf') format('truetype');
+    src: url('fonts/ZillaSlabHighlight-Regular.ttf') format('truetype');
 }
 
 @font-face
 {
     font-family: 'Zilla Slab Highlight';
-    src: url('ZillaSlabHighlight-Bold.ttf') format('truetype');
+    src: url('fonts/ZillaSlabHighlight-Bold.ttf') format('truetype');
     font-style: bold;
-}
-
-html
-{
-    background: url("../img/sunrise.gif") no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-	background-size: cover;
 }
 
 /* Removing any sort of text decoration from links or its attributes
@@ -132,7 +123,7 @@ a:active
     max-height: 20%;
 }
 
-/* Placing the gears GIF at the footer of the page
+/* Placing the "loading" GIF at the footer of the page
  */
 .bottom
 {
@@ -153,6 +144,7 @@ a:active
     transform: translateX(-50%) translateY(-50%);
 
     font-size: 35px;
+    color: black;
 }
 
 /* Styling for the about paragraph
@@ -165,6 +157,7 @@ a:active
     padding-right: 15px;
 
     font-size: 20px;
+    color: black;
 }
 
 /* Styling for the about CONTINUE button
@@ -194,6 +187,7 @@ a:active
     padding: 15px;
     position: absolute;
     top: 8%;
+    color: black;
 }
 
 /* General button styling
@@ -227,18 +221,18 @@ a:active
     transform: translateX(-50%) translateY(-50%);
 }
 
-/* Button position for feature3 button
+/* Button position for stats button
  */
-.feature3-button
+.stats-button
 {
     top: 70%;
     left: 25%;
     transform: translateX(-50%) translateY(-50%);
 }
 
-/* Button position for feature4 button
+/* Button position for settings button
  */
-.feature4-button
+.settings-button
 {
     top: 70%;
     left: 75%;
@@ -273,18 +267,18 @@ a:active
     transform: translateX(-50%) translateY(-50%);
 }
 
- /* Image position for feature3
+ /* Image position for stats
   */
- .feature3-image
+ .stats-image
  {
      top: 68%;
      left: 25%;
      transform: translateX(-50%) translateY(-50%);
  }
 
- /* Image position for feature4
+ /* Image position for settings
   */
- .feature4-image
+ .settings-image
  {
      top: 68%;
      left: 75%;
@@ -313,9 +307,9 @@ a:active
     transform: translateX(-50%) translateY(-50%);
 }
 
-/* Header positioning and size for feature3
+/* Header positioning and size for stats
  */
-.feature3-header
+.stats-header
 {
     position: absolute;
     font-size: 15px;
@@ -324,13 +318,224 @@ a:active
     transform: translateX(-50%) translateY(-50%);
 }
 
-/* Header positioning and size for feature4
+/* Header positioning and size for settings
  */
-.feature4-header
+.settings-header
 {
     position: absolute;
     font-size: 15px;
     top: 73%;
     left: 75%;
     transform: translateX(-50%) translateY(-50%);
+}
+
+/* CSS for the D3 clock
+ */
+svg.clock
+{
+    stroke-linecap: round;
+}
+
+.face
+{
+    stroke: #aac;
+    stroke-width: 6;
+}
+
+.hourtick.face
+{
+}
+
+.minutetick.face
+{
+    stroke-width: 2;
+}
+
+.hand
+{
+    stroke: #336;
+    stroke-width: 8;
+}
+
+.hour.hand
+{
+    stroke-width: 12;
+}
+
+.minute.hand
+{
+}
+
+.second.hand
+{
+    stroke: red;
+    stroke-width: 6;
+}
+
+.mellow.hand
+{
+    stroke: green;
+    stroke-width: 4;
+}
+
+#clock-face
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+/* Styling for the form
+ */
+#name
+{
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+#email
+{
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+#subject
+{
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+#message
+{
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+input[type=text]
+{
+    width: 75%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+
+    font-family: 'Zilla Slab Highlight', cursive;
+    font-size: 15px;
+}
+
+input[type=submit]
+{
+    width: 20%;
+    background-color: white;
+    color: black;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+
+    font-family: 'Zilla Slab Highlight', cursive;
+    font-size: 10px;
+
+    position: absolute;
+    top: 85%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+/* Styling for the "BACK" button where the clock is
+ */
+.clock-back-button
+{
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+
+    background-color: white;
+    border-radius: 10px;
+    color: black;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+    font-family: 'Zilla Slab Highlight', cursive;
+}
+
+/* Styling for the "BACK" button where the stats page is
+ */
+.stats-back-button
+{
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+
+    background-color: white;
+    border-radius: 10px;
+    color: black;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+    font-family: 'Zilla Slab Highlight', cursive;
+}
+
+/* All styling for the stats headers and paragraphs
+ */
+#stats-header
+{
+    position: absolute;
+    top: 10%;
+    padding-left: 15px;
+    padding-right: 15px;
+
+    font-size: 25px;
+    font-family: 'Zilla Slab Highlight', cursive;
+    color: black;
+}
+
+#stats-time
+{
+    position: absolute;
+    top: 35%;
+    padding-left: 15px;
+    padding-right: 15px;
+
+    font-size: 20px;
+    font-family: 'Zilla Slab Highlight', cursive;
+    color: black;
+}
+
+#stats-next
+{
+    position: absolute;
+    top: 45%;
+    padding-left: 15px;
+    padding-right: 15px;
+
+    font-size: 20px;
+    font-family: 'Zilla Slab Highlight', cursive;
+    color: black;
+}
+
+#stats-paragraph
+{
+    position: absolute;
+    top: 55%;
+    padding-left: 15px;
+    padding-right: 15px;
+
+    font-size: 10px;
+    font-family: 'Zilla Slab Highlight', cursive;
+    color: black;
 }
