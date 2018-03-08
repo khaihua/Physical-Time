@@ -1,0 +1,63 @@
+% Author: Cristian Gonzales
+% Created for Physical Time, 2018
+
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[document]{ragged2e}
+
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+
+\begin{document}
+	\Large{\textbf{Release Plan}}\\
+	\Large{\textbf{Product: Physical Time iOS Application}}\\
+	\Large{\textbf{Team: Physical Time Team}}\\
+	\Large{\textbf{Date: January 21, 2018}}\\
+	
+	\vspace{-3mm}
+	
+	\section*{High Level Goals}
+		\vspace{-3mm}
+		\begin{itemize}
+			\item Create an iOS application that can display augmented time based on user input and positioning of the Sun (hence, Physical Time).
+			\item Visualize the positioning of the sun relative to the user's location (latitude and longitude) and create a suite of tools that the user may use to truly visualize physical time.
+			\item Create an easy-to-use user interface that makes it intuitive and easy to check physical time attributes.
+		\end{itemize}
+	\section*{Sprint 1}
+		\vspace{-3mm}
+		\begin{itemize}
+		    \item (3) As a developer, I want to learn and get used to the frameworks, microframeworks, and development environment needed in order to build an iOS application.
+		    \item (8) As a developer, I want to be able to gather critical data points (e.g. sunrise and sunset) that will help visualize physical time relative to the user's location.
+		\end{itemize}
+	\section*{Sprint 2}
+	    \vspace{-3mm}
+	    \begin{itemize}
+		    \item (8) As a user, I want to see a augmented clock that displays a 24-hour time format in one clock rotation (12 hours), with 4 hour divisions.
+		    \item (3) As a user, I want to see a decent UI in the works so that I may easily navigate the application and know the exact purpose it serves (with no prior knowledge of the application).
+		    \item (8) As a developer, I want to integrate an easy-to-use visualization framework to create the clock (e.g. d3.js).
+		\end{itemize}
+	\section*{Sprint 3}
+	    \vspace{-3mm}
+	    \begin{itemize}
+		    \item (21) As a user, I want to be able to enter my own values to manually augment the clock and see where the sun is based on the augmented clock (i.e. see what times sunrise, sunset, dusk, dawn occur according to the augmented clock).
+		    \item (8) As a developer, I want to start on the visualization to show the user where the sun is relative to where they are on the Earth.  
+		    \item (3) As a developer, I want to be able to dynamically change the background based on the current time (so that it reflects the time of day, like night, nadir, et cetera).  
+		\end{itemize}	
+	\section*{Sprint 4}
+	    \vspace{-3mm}
+	    \begin{itemize}
+		    \item (21) As a user, I want at least two or three more animations as features to further visualize the physical time, relative to my location.
+		    \item (8) As a user, I want to see a settings/configuration page just in case I forget the values I input for the clock augmentation.
+		    \item (3) As a user, I want to save my configuration settings in local storage.
+		\end{itemize}	
+	\section*{Product backlog}
+	    \vspace{-3mm}
+	    \begin{itemize}
+		    \item (3) As a developer, I want to refactor duplicated code and better modularize helper functions scattered throughout the code, for better cohesiveness.
+		    \item (13) As a developer, I want to implement dependency injections where applicable and create standard coding conventions to be used throughout the entire codebase.
+		    \item (1) As a user, I want a well defined wiki for those looking to contribute to the application.
+		    \item (21) As a user, I want to see other implementations of different types, if you will, of time, in the near future.
+		\end{itemize}
+\end{document}
